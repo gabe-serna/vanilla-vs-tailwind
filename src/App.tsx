@@ -1,3 +1,4 @@
+import { ThemeProvider } from "./components/theme-provider";
 import {
   Code,
   CodeBlock,
@@ -11,7 +12,7 @@ import {
 
 function App() {
   return (
-    <>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <section id="introduction">
         <Heading1>How to Write CSS 10x Faster in 5 Minutes</Heading1>
         <TextColumn>
@@ -133,7 +134,7 @@ function App() {
           </Output>
         </CodeBlock>
       </section>
-    </>
+    </ThemeProvider>
   );
 }
 

@@ -50,7 +50,7 @@ export const Paragraph = ({
   return (
     <p
       className={
-        "2xl:text-xl xl:text-lg lg:text-base text-sm font-light mt-6 text-center rounded-md italic bg-[var(--accent)] py-2 mx-auto  " +
+        "2xl:text-xl xl:text-lg lg:text-base text-sm font-light mt-6 text-center rounded-md italic text-accent-foreground bg-accent py-2 mx-auto  " +
         className
       }
     >
@@ -91,7 +91,7 @@ interface CodeProps extends Props {
 export const Code = ({ caption = "", children, className = "" }: CodeProps) => {
   return (
     <figure className={"w-full lg:w-1/3 min-w-min " + className}>
-      <pre className="flex items-start 2xl:text-xl xl:text-lg lg:text-base text-sm font-mono text-white/60 bg-[var(--card)] rounded-md p-4 mt-4 h-min min-w-min text-wrap">
+      <pre className="flex items-start p-4 mt-4 font-mono text-sm rounded-md 2xl:text-xl xl:text-lg lg:text-base card-foreground bg-card h-min min-w-min text-wrap">
         {children}
       </pre>
       {caption && (
@@ -107,7 +107,7 @@ export const Output = ({ children, className = "w-full lg:w-1/3" }: Props) => {
   return (
     <div
       className={
-        "flex items-start 2xl:text-xl xl:text-lg lg:text-base text-sm min-w-min font-mono text-white/60 bg-[var(--card)] rounded-md p-4 lg:mt-0 mt-4 " +
+        "flex items-start 2xl:text-xl xl:text-lg lg:text-base text-sm min-w-min font-mono text-white/60 bg-card rounded-md p-4 lg:mt-0 mt-4 " +
         className
       }
     >
