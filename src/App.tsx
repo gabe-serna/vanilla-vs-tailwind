@@ -59,7 +59,7 @@ function App() {
         <CodeBlock>
           <Code caption={"TailwindCSS"}>
             {
-              '<div className="size-10 rounded-full mx-auto bg-blue-600 transition-[width_height_background-color] hover:size-12 hover:bg-red-600" />'
+              '<div class="size-10 rounded-full mx-auto bg-blue-600 transition-[width_height_background-color] hover:size-12 hover:bg-red-600"></div>'
             }
           </Code>
           <Output>
@@ -224,7 +224,7 @@ function App() {
             <Resizeable />
           </Output>
         </CodeBlock>
-        <TextColumn className="mt-16">
+        <TextColumn className="mt-12">
           <Paragraph>
             Although this is a really simple example of changing flex direction and
             adjusting some sizes when on small screens, the code required to do that
@@ -243,6 +243,77 @@ function App() {
             {`<div class="max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg shadow-black/50 dark:shadow-white/20 sm:max-w-2xl ring-1 ring-slate-900/5">\n  <div class="flex flex-col sm:flex-row">\n    <div class="sm:shrink-0">\n      <img class="w-full object-center sm:h-full sm:w-48 h-32 object-cover sm:object-center" src="/img/cat.jpg" alt="cat picture" />\n    </div>\n    <div class="p-4 space-y-2 sm:p-6 2xl:p-8">\n      <div class="text-xs font-medium leading-6 text-indigo-600 sm:text-sm">\n        Meet Mittens the Cat\n      </div>\n      <p class="block text-sm font-semibold leading-6 sm:text-base text-slate-900">\n        Luxuriously Soft Fur\n      </p>\n      <p class="text-xs leading-5 sm:leading-6 sm:text-sm text-slate-600">\n        Looking to take your fur to the next level? We have a proven formula to get your fur silky smooth in only 30 days!\n      </p>\n    </div>\n  </div>\n</div>`}
           </Code>
         </CodeBlock>
+        <TextColumn className="mt-12">
+          <Paragraph>
+            Yeah, that's it. You don't have to scroll through an entire damn
+            encyclopedia of classes and media queries to find what you're looking
+            for. The styles you want are just… right there, inline with your HTML.
+          </Paragraph>
+          <Paragraph>
+            You might be thinking{" "}
+            <em>"Why don't I just write inline vanilla CSS then?"</em>.
+          </Paragraph>
+          <Paragraph>
+            Well, it <em>almost</em> works except for one glaring issue:{" "}
+            <strong className="font-medium">
+              you can't write media queries inline with Vanilla CSS
+            </strong>
+            .
+          </Paragraph>
+          <Paragraph>Sorry.</Paragraph>
+          <Paragraph>
+            But hey, guess what? You can write media queries with Tailwind{";)"}
+          </Paragraph>
+          <Paragraph>
+            Responsive design utility variants are honestly one of Tailwind's most
+            convienent features (and there's a lot). Just so you can see how
+            ridiculously simple it is to write responsive styles with Tailwind, take
+            a look at this side-by-side comparison.
+          </Paragraph>
+        </TextColumn>
+        <CodeBlock>
+          <Code caption={"TailwindCSS"}>{`<div class="
+  bg-red-600
+  sm:bg-blue-600
+  md:bg-green-600
+  lg:bg-purple-600
+  xl:bg-amber-600
+  2xl:bg-stone-600
+"></div>`}</Code>
+          <Code caption={"Vanilla CSS"}>{`.color { background-color: #dc2626; }
+          
+@media screen and (min-width: 640px) {
+  .color { background-color: #2563eb; }
+}
+@media screen and (min-width: 768px) {
+  .color { background-color: #16a34a; }
+}
+@media screen and (min-width: 1024px) {
+  .color { background-color: #9333ea; }
+}
+@media screen and (min-width: 1280px) {
+  .color { background-color: #d97706; }
+}
+@media screen and (min-width: 1536px) {
+  .color { background-color: #57534e; }
+}`}</Code>
+        </CodeBlock>
+        <TextColumn className="mt-12">
+          <Paragraph>I think you get the point.</Paragraph>
+          <Paragraph variant="quote">
+            Responsive design sucks in vanilla, but it's easy and quick with
+            TailwindCSS.
+          </Paragraph>
+          <Paragraph>
+            In the above example, the reason why the Tailwind code is faster isn't
+            just because of the responsive utility classes. It's also because of
+            Tailwind's built-in style system that provides colors and sizing. Let me
+            show you what I mean.
+          </Paragraph>
+        </TextColumn>
+        <TextColumn className="mt-16">
+          <Heading2>Built-in Design System</Heading2>
+        </TextColumn>
       </section>
     </ThemeProvider>
   );
