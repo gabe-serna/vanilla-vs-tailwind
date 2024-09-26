@@ -9,6 +9,7 @@ import {
   Paragraph,
   TextColumn
 } from "./components/Typography";
+import Resizeable from "./components/Resizeable";
 
 function App() {
   return (
@@ -125,12 +126,32 @@ function App() {
         </TextColumn>
         <CodeBlock>
           <Code caption={"TailwindCSS"}>
-            {
-              '<div className="size-10 rounded-full mx-auto bg-blue-600 transition-[width_height_background-color] hover:size-12 hover:bg-red-600" />'
-            }
+            {`<div class="max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg shadow-black/50 dark:shadow-white/20 sm:max-w-2xl ring-1 ring-slate-900/5">\n  <div class="flex flex-col sm:flex-row">\n    <div class="sm:shrink-0">
+            <img
+              class="w-full object-center sm:h-full sm:w-[193px] h-32 object-cover sm:object-center"
+              src="/img/cat.jpg"
+              alt="cat picture"
+            />
+          </div>
+          <div class="p-4 space-y-2 sm:p-6 2xl:p-8">
+            <div class="text-xs font-medium leading-6 text-indigo-600 sm:text-sm">
+              Meet Mittens the Cat
+            </div>
+            <p
+              class="block text-sm font-semibold leading-6 sm:text-base text-slate-900"
+            >
+              Luxuriously Soft Fur
+            </p>
+            <p class="text-xs leading-5 sm:leading-6 sm:text-sm text-slate-600">
+              Looking to take your fur to the next level? We have a proven formula to
+              get your fur silky smooth in only 30 days!
+            </p>
+          </div>
+        </div>
+      </div>`}
           </Code>
-          <Output>
-            <div className="w-full h-40 bg-blue-600 rounded-md" />
+          <Output className="w-full md:w-3/4 h-96">
+            <Resizeable />
           </Output>
         </CodeBlock>
       </section>
