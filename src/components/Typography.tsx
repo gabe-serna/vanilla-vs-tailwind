@@ -86,21 +86,41 @@ export const ListItem = ({ children, className }: Props) => {
 
 interface CodeProps extends Props {
   caption?: string;
+  scrollable?: boolean;
 }
 
-export const Code = ({ caption = "", children, className = "" }: CodeProps) => {
-  return (
-    <figure className={"w-full lg:w-1/3 min-w-min " + className}>
-      <pre className="flex items-start p-4 mt-4 font-mono text-sm rounded-md 2xl:text-xl xl:text-lg lg:text-base card-foreground bg-card h-min min-w-min text-wrap">
-        {children}
-      </pre>
-      {caption && (
-        <figcaption className="w-full text-xs italic font-light text-right 2xl:text-lg xl:text-base lg:text-sm text-white/50">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
-  );
+export const Code = ({
+  children,
+  caption,
+  scrollable = false,
+  className = ""
+}: CodeProps) => {
+  if (!scrollable)
+    return (
+      <figure className={"w-full lg:w-1/3 min-w-min " + className}>
+        <pre className="flex items-start p-4 mt-4 font-mono text-sm rounded-md 2xl:text-xl xl:text-lg lg:text-base card-foreground bg-card h-min min-w-min text-wrap">
+          {children}
+        </pre>
+        {caption && (
+          <figcaption className="w-full text-xs italic font-light text-right 2xl:text-lg xl:text-base lg:text-sm text-white/50">
+            {caption}
+          </figcaption>
+        )}
+      </figure>
+    );
+  else
+    return (
+      <figure className={"w-full lg:w-1/3 " + className}>
+        <pre className="flex items-start p-4 mt-4 overflow-x-auto font-mono text-sm rounded-md 2xl:text-xl xl:text-lg lg:text-base card-foreground bg-card h-min ">
+          {children}
+        </pre>
+        {caption && (
+          <figcaption className="w-full text-xs italic font-light text-right 2xl:text-lg xl:text-base lg:text-sm text-white/50">
+            {caption}
+          </figcaption>
+        )}
+      </figure>
+    );
 };
 
 export const Output = ({ children, className = "w-full lg:w-1/3" }: Props) => {
@@ -116,11 +136,21 @@ export const Output = ({ children, className = "w-full lg:w-1/3" }: Props) => {
   );
 };
 
-export const CodeBlock = ({ children, className }: Props) => {
+interface CodeBlockProps extends Props {
+  variant?: "columns" | "rows";
+}
+
+export const CodeBlock = ({
+  children,
+  variant = "columns",
+  className
+}: CodeBlockProps) => {
+  const variantClass = variant === "columns" ? "lg:flex-row lg:justify-around " : "";
   return (
     <div
       className={
-        "flex lg:flex-row flex-col-reverse gap-6 align-center lg:justify-around items-center mt-16 " +
+        "flex flex-col-reverse gap-6 align-center items-center mt-16 " +
+        variantClass +
         className
       }
     >

@@ -121,38 +121,127 @@ function App() {
           <Paragraph>
             If you've ever tried making a website responsive using Vanilla CSS, you
             know that it quickly becomes utter chaos. Look at this simple example
-            below to show you what I mean.
+            below to show you what I mean. If you're on a computer, try resizing the
+            card below by dragging on the handle to the right.
           </Paragraph>
         </TextColumn>
-        <CodeBlock>
-          <Code caption={"TailwindCSS"}>
-            {`<div class="max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg shadow-black/50 dark:shadow-white/20 sm:max-w-2xl ring-1 ring-slate-900/5">\n  <div class="flex flex-col sm:flex-row">\n    <div class="sm:shrink-0">
-            <img
-              class="w-full object-center sm:h-full sm:w-[193px] h-32 object-cover sm:object-center"
-              src="/img/cat.jpg"
-              alt="cat picture"
-            />
-          </div>
-          <div class="p-4 space-y-2 sm:p-6 2xl:p-8">
-            <div class="text-xs font-medium leading-6 text-indigo-600 sm:text-sm">
-              Meet Mittens the Cat
-            </div>
-            <p
-              class="block text-sm font-semibold leading-6 sm:text-base text-slate-900"
-            >
-              Luxuriously Soft Fur
-            </p>
-            <p class="text-xs leading-5 sm:leading-6 sm:text-sm text-slate-600">
-              Looking to take your fur to the next level? We have a proven formula to
-              get your fur silky smooth in only 30 days!
-            </p>
-          </div>
-        </div>
-      </div>`}
+        <CodeBlock variant="rows">
+          <Code caption={"Vanilla CSS"} scrollable={true} className="lg:w-3/4">
+            {`<!-- STYLES -->
+.card-container {
+  max-width: 28rem;
+  width: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+}
+.cat-image {
+  width: 100%;
+  height: 8rem;
+  object-position: center;
+  object-fit: cover;
+}
+.card-text-container {
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+.purple-text {
+  color: #4f46e5;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+}
+.card-heading {
+  color: #0f172a;
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+.card-body {
+  color: #475569;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+@media screen and (min-width: 640px) {
+  .card {
+    flex-direction: row;
+  }
+  .shrink-none {
+    flex-shrink: 0;
+  }
+  .cat-image {
+    height: 100%;
+    width: 12rem;
+  }
+  .card-text-container {
+    padding: 1.5rem;
+  }
+  .purple-text {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .card-heading {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .card-body {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+}
+  
+<!-- HTML -->
+<div class="card-container">
+  <div class="card">
+    <div class="shrink-none">
+      <img
+        class="cat-image"
+        src="/img/cat.jpg"
+        alt="cat picture"
+      />
+    </div>
+    <div class="card-text-container">
+      <div class="purple-text">Meet Mittens the Cat</div>
+      <p class="card-heading">Luxuriously Soft Fur</p>
+      <p class="card-body">
+        Looking to take your fur to the next level? We have a proven formula to
+        get your fur silky smooth in only 30 days!
+      </p>
+    </div>
+  </div>
+</div>`}
           </Code>
           <Output className="w-full md:w-3/4 h-96">
             <Resizeable />
           </Output>
+        </CodeBlock>
+        <TextColumn className="mt-16">
+          <Paragraph>
+            Although this is a really simple example of changing flex direction and
+            adjusting some sizes when on small screens, the code required to do that
+            is an eyesore. You have to come up with unique class names for each part—
+            <em>make sure to not reuse those names btw {":)"}</em>—and then in a
+            separate part of the file manage the media queries.
+          </Paragraph>
+          <Paragraph>Yuck.</Paragraph>
+          <Paragraph>
+            Let's take a look at the code required to do the same thing with
+            TailwindCSS.
+          </Paragraph>
+        </TextColumn>
+        <CodeBlock variant="rows">
+          <Code caption={"TailwindCSS"} scrollable={true} className="lg:w-3/4">
+            {`<div class="max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg shadow-black/50 dark:shadow-white/20 sm:max-w-2xl ring-1 ring-slate-900/5">\n  <div class="flex flex-col sm:flex-row">\n    <div class="sm:shrink-0">\n      <img class="w-full object-center sm:h-full sm:w-48 h-32 object-cover sm:object-center" src="/img/cat.jpg" alt="cat picture" />\n    </div>\n    <div class="p-4 space-y-2 sm:p-6 2xl:p-8">\n      <div class="text-xs font-medium leading-6 text-indigo-600 sm:text-sm">\n        Meet Mittens the Cat\n      </div>\n      <p class="block text-sm font-semibold leading-6 sm:text-base text-slate-900">\n        Luxuriously Soft Fur\n      </p>\n      <p class="text-xs leading-5 sm:leading-6 sm:text-sm text-slate-600">\n        Looking to take your fur to the next level? We have a proven formula to get your fur silky smooth in only 30 days!\n      </p>\n    </div>\n  </div>\n</div>`}
+          </Code>
         </CodeBlock>
       </section>
     </ThemeProvider>

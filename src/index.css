@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Segoe UI, Helvetica, Arial, sans-serif;
   line-height: 1.5;
 
   color: hsl(0, 0%, 90%);
