@@ -12,7 +12,7 @@ import {
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <section id="introduction">
         <Heading1>How to Write CSS 10x Faster in 5 Minutes</Heading1>
         <TextColumn>
