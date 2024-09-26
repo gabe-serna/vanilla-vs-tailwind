@@ -8,6 +8,8 @@
 
   color: rgba(255, 255, 255, 0.87);
   background-color: #161616;
+  --card: #312d2d;
+  --accent: #502929;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,4 +19,21 @@
 
 body {
   padding: 2rem 3rem;
+}
+
+.circle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 1000px;
+  margin: 0 auto;
+  background-color: #2563eb;
+  transition-property: width height background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+
+  &:hover {
+    width: 3rem;
+    height: 3rem;
+    background-color: #dc2626;
+  }
 }
